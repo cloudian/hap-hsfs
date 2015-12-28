@@ -1,0 +1,44 @@
+This will help you setup Spark stand along on HyperStore cluster.
+"stand along" simply means it runs without Hadoop YARN nor mesos.
+
+1. go to Spark download page(http://spark.apache.org/downloads.html), 
+select 1.5.2 & "pre-build package for Hadoop 2.6 or later".
+and download spark-1.5.2-bin-hadoop2.6.tgz.
+
+2. upload spark-1.5.2-bin-hadoop2.6.tgz to one Cloudian HyperStore node
+
+3. unpack the uploaded spark-1.5.2-bin-hadoop2.6.tgz to your Spark installation directory(e.g. /opt)
+
+4. upload hap/build/*.jar(see the followings) to the shared location(e.g. /usr/local/lib/) of the node
+
+4-1: hadoop-aws-2.7.1.jar
+4-2: hap-5.2.1.jar
+4-3: aws-java-sdk-1.7.4.jar
+
+5. go to Spark installation directory, and copy spark-env.sh to modify
+
+# cp conf/spark-env.sh.template as conf/spark-env.sh
+
+5. add Cloudian related classpaths to SPARK_CLASSPATH in spark-env.sh
+
+e.g.
+SPARK_CLASSPATH=/usr/local/lib/*:/opt/cloudian/conf:/opt/cloudian/lib/apache-cassandra-2.0.11.jar:/opt/cloudian/lib/apache-cassandra-clientutil-2.0.11.jar:/opt/cloudian/lib/apache-cassandra-thrift-2.0.11.jar:/opt/cloudian/lib/cassandra-driver-core-2.1.4.jar:/opt/cloudian/lib/cloudian-s3-5.2.jar:/opt/cloudian/lib/commons-pool-1.5.5.jar:/opt/cloudian/lib/jetty-util-9.2.3.v20140905.jar:/opt/cloudian/lib/hector-core-1.1-4.jar:/opt/cloudian/lib/guava-17.0.jar:/opt/cloudian/lib/jedis-2.0.1-jmx.jar:/opt/cloudian/lib/snappy-java-1.1.0.1.jar:/opt/cloudian/lib/httpclient-4.3.6.jar:/opt/cloudian/lib/httpcore-4.4.1.jar
+
+6. copy conf/spark-defaults.conf to modify
+
+# cp conf/spark-defaults.conf.template conf/spark-defaults.conf
+
+7. add hsfs(s3a) related properties
+
+# cat conf/spark-defaults.conf | grep hadoop
+spark.hadoop.fs.s3a.access.key	ACCESS_KEY
+spark.hadoop.fs.s3a.secret.key	SECRET_KEY
+spark.hadoop.fs.s3a.connection.ssl.enabled	true|false
+spark.hadoop.fs.s3a.endpoint		S3.DOMAIN.COM:S3_PORT
+spark.hadoop.fs.hsfs.impl		com.cloudian.hadoop.HyperStoreFileSystem
+
+8. copy /usr/local/lib/* and spark installation including the modified spark-env.sh and spark-defaults.conf to the other nodes
+
+9. start spark master/slave services on each node
+
+

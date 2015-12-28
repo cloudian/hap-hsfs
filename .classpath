@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="build/jars/apache-cassandra-thrift-2.0.11.jar"/>
-	<classpathentry kind="lib" path="build/jars/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="build/jars/pig-0.15.0-core-h2.jar"/>
-	<classpathentry kind="lib" path="build/jars/slf4j-api-1.7.5.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/hadoop-aws"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/hadoop-common"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/hadoop-mapreduce-client-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/mts-s3"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/apache-cassandra-thrift-2.0.11.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/pig-0.15.0-core-h2.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
