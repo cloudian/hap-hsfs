@@ -41,4 +41,13 @@ spark.hadoop.fs.hsfs.impl		com.cloudian.hadoop.HyperStoreFileSystem
 
 9. start spark master/slave services on each node
 
+e.g. master on cloudian-node1
+[root@cloudian-node1 spark-1.5.2-bin-hadoop2.6]# sbin/start-master.sh 
 
+e.g. slave(2 cores, 2 GB) on cloudian-node6
+[root@cloudian-node6 spark-1.5.2-bin-hadoop2.6]# sbin/start-slave.sh -c 2 -m 2g spark://cloudian-node1:7077
+
+10. check the status of the Spark cluster launched on the Spark master UI
+
+e.g. master on cloudian-node1
+http://cloudian-node1:8080/
