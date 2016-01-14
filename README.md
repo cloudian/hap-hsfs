@@ -26,7 +26,7 @@ This platform was tested against the following versions.
 
 ## Installation
 
-Please follow INSTALL_SPARK for details.
+Please follow [Installation](https://github.com/cloudian/hap/wiki/Installation) on our wiki.
 
 ## Usage
 You can use hsfs protocol to access your files stored in Cloudian HyperStore as follows. If you have used s3n or s3a, then simply replace s3n/s3a with hsfs.
